@@ -8,7 +8,8 @@ class Task:
     """
 
     def __init__(self, task_name: str, task_category: str, due_date: str) -> None:
-        """Construct all the necessary attributes for the task object.
+        """
+        Construct all the necessary attributes for the task object.
 
         :param task_name: name of the task
         :type task_name: str
@@ -40,8 +41,8 @@ class PrioriTeaList:
         """
         Add a new task to the list.
 
-        Args:
-            task (Task): Task object to add
+        :param task: Task object to add
+        :type task: Task
         """
         unique_id = str(uuid.uuid4())
         self.task_list[unique_id] = {
@@ -56,8 +57,8 @@ class PrioriTeaList:
         """
         Changes a task's status to completed
 
-        Args:
-            task_name (str): Name of the task to complete
+        :param task_name: Name of the task to complete
+        :type task_name: str
         """
         active_unique_id = self.task_mapper.get(task_name)
         self.task_list[active_unique_id]["status"] = True
@@ -66,8 +67,8 @@ class PrioriTeaList:
         """
         Remove a specific task from the task list
 
-        Args:
-            task_name (str): Name of the task to remove
+        :param task_name: Name of the task to remove
+        :type task_name: str
         """
         active_unique_id = self.task_mapper.get(task_name)
         del self.task_list[active_unique_id]
@@ -77,7 +78,7 @@ class PrioriTeaList:
         """
         Show the entire tasks and their attributes. Return all the values of the list.
 
-        Returns:
-            List: List of tasks to show
+        :return: List of tasks to show
+        :rtype: List
         """
         return list(self.task_list.values())
