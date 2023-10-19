@@ -2,8 +2,8 @@ install:
 	poetry install
 
 lint:
-	poetry run black .
-	poetry run mypy .
+	poetry run black prioritealist tests
+	poetry run mypy prioritealist
 	poetry run pylint prioritealist tests
 
 test:

@@ -1,3 +1,7 @@
+"""
+Test file for the main file of Prioritealist
+"""
+
 from prioritealist.main import Task, PrioriTeaList
 
 desired_result = {
@@ -9,6 +13,8 @@ desired_result = {
 
 
 def test_extract_task_list():
+    """Check if we can extract the task list
+    """
     class_instance = PrioriTeaList()
     class_instance.add_task(
         Task("going to the bakery", task_category="food", due_date="04-12-2023")
@@ -20,6 +26,8 @@ def test_extract_task_list():
 
 
 def test_add_task():
+    """Check if we can add a task to the task list
+    """
     class_instance = PrioriTeaList()
     task_instance = Task(
         "going to the bakery", task_category="food", due_date="04-12-2023"
@@ -27,10 +35,12 @@ def test_add_task():
     class_instance.add_task(task_instance)
 
     assert len(class_instance.task_list.keys()) == 1
-    assert task_instance.task_name in class_instance.task_mapper.keys()
+    assert task_instance.task_name in class_instance.task_mapper
 
 
 def test_complete_task():
+    """Check if we can complete a task from the task list
+    """
     class_instance = PrioriTeaList()
     task_instance = Task(
         "going to the bakery", task_category="food", due_date="04-12-2023"
@@ -38,12 +48,14 @@ def test_complete_task():
     class_instance.add_task(task_instance)
     task_id = class_instance.task_mapper[task_instance.task_name]
 
-    assert class_instance.task_list[task_id]["status"] == False
+    assert class_instance.task_list[task_id]["status"] is False
     class_instance.complete_task(task_instance.task_name)
-    assert class_instance.task_list[task_id]["status"] == True
+    assert class_instance.task_list[task_id]["status"] is True
 
 
 def test_remove_task():
+    """Check if we can remove a task from the task list
+    """
     class_instance = PrioriTeaList()
     task_instance = Task(
         "going to the bakery", task_category="food", due_date="04-12-2023"
@@ -52,4 +64,4 @@ def test_remove_task():
     class_instance.remove_task(task_instance.task_name)
 
     assert len(class_instance.task_list) == 0
-    assert task_instance.task_name not in class_instance.task_mapper.keys()
+    assert task_instance.task_name not in class_instance.task_mapper

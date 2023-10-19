@@ -1,3 +1,6 @@
+"""
+Main file for PrioriTealist
+"""
 import uuid
 from typing import List
 
