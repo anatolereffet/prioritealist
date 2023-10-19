@@ -10,5 +10,5 @@ test:
 	poetry run pytest -v --cov=prioritealist/
 
 
-docs:
+docs: docs/source/*
 	poetry run sphinx-build -b html docs/source docs/build

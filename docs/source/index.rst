@@ -15,6 +15,8 @@ Welcome to PrioriTeaList's documentation!
 
 This is a demonstration of the init function of Task ``prioritealist.main.Task.__init__()`` :
 
+.. autofunction:: prioritealist.main.Task
+
 .. autofunction:: prioritealist.main.Task.__init__
 
 
