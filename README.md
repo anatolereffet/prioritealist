@@ -1,27 +1,26 @@
-## Pour lancer l'environnement
+## Booting up the environment
 ---
-Dans le folder source du projet
+In the root project folder
 ```bash
 pip install poetry
 ```
 
-Pour créer son environnement poetry
+To create your poetry environment
 ```bash
 poetry shell
 ```
-Récupérer la commande dans l'output du style 
+Store the command that will be printed in the output for later use
 ```bash
 emulate bash -c '. /Users/aze/Library/Caches/pypoetry/virtualenvs/priori-tea-list-FeC8235P_-py3.8/bin/activate'
 ```
-Ça permet de relancer son environnement poetry dès que nécessaire
+This will enable you to launch your poetry environment when necessary
 
-Pour désactiver l'environnement 
+To deactivate the environment
 ```bash
 deactivate
 ```
-
-Pour run les différents tests/type hint checker utiliser le makefile tel 
+To run the different tests/type hints, use the makefile such as 
 ```bash
 make lint
 ```
-Les différentes commandes dispo sont visible dans le Makefile
+The various commands can be seen in the Makefile

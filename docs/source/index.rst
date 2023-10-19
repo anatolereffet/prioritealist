@@ -11,6 +11,12 @@ Welcome to PrioriTeaList's documentation!
    :caption: Contents:
 
 
+**PrioriTeaList** is a test documentation, we can showcase here
+
+This is a demonstration of the init function of Task ``prioritealist.main.Task.__init__()`` :
+
+.. autofunction:: prioritealist.main.Task.__init__
+
 
 Indices and tables
 ==================

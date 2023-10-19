@@ -3,32 +3,42 @@ from typing import List
 
 
 class Task:
-    """Class to define a task
     """
+    Class to define a task
+    """
+
     def __init__(self, task_name: str, task_category: str, due_date: str) -> None:
         """Construct all the necessary attributes for the task object.
 
-        Args:
-            task_name (str): name of the task
-            task_category (str): category of the task
-            due_date (str): the tasks due date
+        :param task_name: name of the task
+        :type task_name: str
+        :param task_category: category of the task
+        :type task_category: str
+        :param due_date: the tasks due date
+        :type due_date: str
+
         """
         self.task_name = task_name
         self.task_category = task_category
         self.due_date = due_date
         self.status = False
 
+
 class PrioriTeaList:
-    """Class to define the task list
     """
+    Class to define the task list
+    """
+
     def __init__(self) -> None:
-        """Construct all the necessary attribute for the task list.
+        """
+        Construct all the necessary attribute for the task list.
         """
         self.task_list: dict = {}
         self.task_mapper: dict = {}
 
     def add_task(self, task: Task) -> None:
-        """Add a new task to the list.
+        """
+        Add a new task to the list.
 
         Args:
             task (Task): Task object to add
@@ -43,7 +53,8 @@ class PrioriTeaList:
         self.task_mapper[task.task_name] = unique_id
 
     def complete_task(self, task_name: str) -> None:
-        """Changes a task's status to completed
+        """
+        Changes a task's status to completed
 
         Args:
             task_name (str): Name of the task to complete
@@ -52,7 +63,8 @@ class PrioriTeaList:
         self.task_list[active_unique_id]["status"] = True
 
     def remove_task(self, task_name: str) -> None:
-        """Remove a specific task from the task list
+        """
+        Remove a specific task from the task list
 
         Args:
             task_name (str): Name of the task to remove
@@ -60,10 +72,10 @@ class PrioriTeaList:
         active_unique_id = self.task_mapper.get(task_name)
         del self.task_list[active_unique_id]
         del self.task_mapper[task_name]
-        
 
     def show_tasks(self) -> List:
-        """Show the entire tasks and their attributes. Return all the values of the list.
+        """
+        Show the entire tasks and their attributes. Return all the values of the list.
 
         Returns:
             List: List of tasks to show

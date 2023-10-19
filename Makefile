@@ -8,3 +8,7 @@ lint:
 
 test:
 	poetry run pytest -v --cov=prioritealist/
+
+
+docs:
+	poetry run sphinx-build -b html docs/source docs/build
