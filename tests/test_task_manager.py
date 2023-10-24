@@ -2,7 +2,7 @@
 Test file for the main file of Prioritealist
 """
 
-from prioritealist.main import Task, PrioriTeaList
+from prioritealist.task_manager import Task, PrioriTeaList
 
 
 def test_add_task():
