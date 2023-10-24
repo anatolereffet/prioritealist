@@ -36,16 +36,6 @@ class Task:
             f"task_category={self.task_category!r}, due_date={self.due_date!r})"
         )
 
-    def __str__(self):
-        """
-        Renders the string class name
-        #fixing black too few public methods
-        """
-        return (
-            f"{self.__class__.__name__}(task_name= {self.task_name!r},"
-            f"task_category={self.task_category!r}, due_date={self.due_date!r})"
-        )
-
 
 class PrioriTeaList:
     """
