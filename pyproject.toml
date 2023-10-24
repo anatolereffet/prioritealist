@@ -1,10 +1,14 @@
 [tool.poetry]
-name = "priori-tea-list"
+name = "prioritealist"
 version = "0.1.0"
 description = "Priority list project for Télécom Paris Post Master Degree"
-authors = ["quentinaml <quentin.amiel@free.fr>"]
+authors = ["quentinaml <quentin.amiel@free.fr>",
+           "anatolereffet <anatole.reffet@ieseg.fr>",
+           "thomasgermoni <thomas.germoni@telecom-paris.fr"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/anatolereffet/prioritealist.git"
+packages = [{include = "prioritealist"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
