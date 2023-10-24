@@ -9,6 +9,8 @@ lint:
 test:
 	poetry run pytest -v --cov=prioritealist/
 
+safety :
+	poetry run safety check
 
 docs: docs/source/*
 	poetry run sphinx-build -b html docs/source docs/build
