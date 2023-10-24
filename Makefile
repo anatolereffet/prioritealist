@@ -4,7 +4,7 @@ install:
 lint:
 	poetry run black prioritealist tests
 	poetry run mypy prioritealist
-	poetry run pylint prioritealist tests
+	poetry run pylint --rcfile .pylintrc prioritealist tests
 
 test:
 	poetry run pytest -v --cov=prioritealist/

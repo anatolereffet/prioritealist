@@ -1,2 +1,3 @@
+[pylint]
 #Exclude the warning too few public methods on each run of pylint
 disable=R0903
