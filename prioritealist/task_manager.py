@@ -3,6 +3,10 @@ Main file for PrioriTealist
 """
 import uuid
 from typing import List
+import logging
+
+# Initialize logging
+logging.basicConfig(level=logging.INFO)
 
 
 class Task:
@@ -26,6 +30,7 @@ class Task:
         self.task_category = task_category
         self.due_date = due_date
         self.status = False
+        logging.info("The task %s has been successfully created !", self.task_name)
 
     def __repr__(self):
         """
@@ -45,9 +50,12 @@ class PrioriTeaList:
     def __init__(self) -> None:
         """
         Construct all the necessary attribute for the task list.
+        The task_list dictionary links task names by their IDs.
+        The task_mapper dictionary links the task IDs by their names.
         """
         self.task_list: dict = {}
         self.task_mapper: dict = {}
+        logging.info("Task list initialization")
 
     def add_task(self, task: Task) -> None:
         """
@@ -57,13 +65,23 @@ class PrioriTeaList:
         :type task: Task
         """
         unique_id = str(uuid.uuid4())
-        self.task_list[unique_id] = {
-            "task": task.task_name,
-            "category": task.task_category,
-            "due_date": task.due_date,
-            "status": task.status,
-        }
-        self.task_mapper[task.task_name] = unique_id
+        try:
+            if task.task_name in self.task_mapper:
+                raise KeyError(f"Task with name '{task.task_name}' already exists.")
+            self.task_list[unique_id] = {
+                "task": task.task_name,
+                "category": task.task_category,
+                "due_date": task.due_date,
+                "status": task.status,
+            }
+            self.task_mapper[task.task_name] = unique_id
+        except KeyError as e:
+            logging.error("KeyError while adding task: %s", e)
+        else:
+            logging.info(
+                "The task %s has been successfully added to the task list !",
+                task.task_name,
+            )
 
     def complete_task(self, task_name: str) -> None:
         """
@@ -72,8 +90,13 @@ class PrioriTeaList:
         :param task_name: Name of the task to complete
         :type task_name: str
         """
-        active_unique_id = self.task_mapper.get(task_name)
-        self.task_list[active_unique_id]["status"] = True
+        try:
+            active_unique_id = self.task_mapper.get(task_name)
+            self.task_list[active_unique_id]["status"] = True
+        except KeyError as e:
+            logging.error("KeyError while completing task: %s", e)
+        else:
+            logging.info("The task %s has been successfully completed !", task_name)
 
     def remove_task(self, task_name: str) -> None:
         """
@@ -82,9 +105,20 @@ class PrioriTeaList:
         :param task_name: Name of the task to remove
         :type task_name: str
         """
-        active_unique_id = self.task_mapper.get(task_name)
-        del self.task_list[active_unique_id]
-        del self.task_mapper[task_name]
+        try:
+            active_unique_id = self.task_mapper.get(task_name)
+            if active_unique_id is not None:
+                del self.task_list[active_unique_id]
+                del self.task_mapper[task_name]
+            else:
+                logging.warning("Task %s not found in the task list.", task_name)
+        except KeyError as e:
+            logging.error("KeyError while removing task: %s", e)
+        else:
+            logging.info(
+                "The task %s has been successfully removed from the task list !",
+                task_name,
+            )
 
     def show_tasks(self) -> List:
         """
