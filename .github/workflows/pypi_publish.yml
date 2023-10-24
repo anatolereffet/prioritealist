@@ -1,0 +1,37 @@
+name: Publish Python distributions to PyPI
+
+on:
+  push:
+    tags:
+     - '*'
+     
+jobs:
+  build-n-publish:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Poetry
+        run: |
+          pipx install poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+          cache: poetry
+          cache-dependency-path: poetry.lock
+      - name: Set Poetry environment
+        run: |
+          poetry env use 3.8
+      - name: Install dependencies
+        run: |
+          poetry install --no-root
+      - name: Get API token
+        run: |
+          poetry config pypi-token.pypi ${{secrets.PYPI_API_TOKEN}}
+      - name: Build
+        run: |
+          poetry build
+      - name: Publish
+        run: |
+          poetry publish
