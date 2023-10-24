@@ -63,15 +63,15 @@ def test_show_task_list():
     assert len(class_output[0]) == 4
     assert len(class_output[1]) == 4
 
-    assert class_output[0]== {
+    assert class_output[0] == {
         "task": "going to the bakery",
         "category": "food",
         "due_date": "04-12-2023",
-        "status": False
+        "status": False,
     }
     assert class_output[1] == {
         "task": "doing homework",
         "category": "school",
         "due_date": "01-11-2023",
-        "status": False
+        "status": False,
     }
