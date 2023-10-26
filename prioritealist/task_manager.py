@@ -18,11 +18,11 @@ class Task:
         """
         Construct all the necessary attributes for the task object.
 
-        :param task_name: name of the task
+        :param task_name: The name of the task
         :type task_name: str
-        :param task_category: category of the task
+        :param task_category: The category of the task
         :type task_category: str
-        :param due_date: the tasks due date
+        :param due_date: The tasks due date
         :type due_date: str
 
         """
@@ -61,70 +61,68 @@ class PrioriTeaList:
         """
         Add a new task to the list.
 
-        :param task: Task object to add
+        :param task: The Task object to add
         :type task: Task
         """
         unique_id = str(uuid.uuid4())
-        try:
-            if task.task_name in self.task_mapper:
-                raise KeyError(f"Task with name '{task.task_name}' already exists.")
-            self.task_list[unique_id] = {
-                "task": task.task_name,
-                "category": task.task_category,
-                "due_date": task.due_date,
-                "status": task.status,
-            }
-            self.task_mapper[task.task_name] = unique_id
-        except KeyError as e:
-            logging.error("KeyError while adding task: %s", e)
-        else:
-            logging.info(
-                "The task %s has been successfully added to the task list !",
-                task.task_name,
-            )
+        if task.task_name in self.task_mapper:
+            logging.error("KeyError while adding task: %s", task.task_name)
+            raise KeyError(f"Task with name '{task.task_name}' already exists.")
+        self.task_list[unique_id] = {
+            "task": task.task_name,
+            "category": task.task_category,
+            "due_date": task.due_date,
+            "status": task.status,
+        }
+        self.task_mapper[task.task_name] = unique_id
+        logging.info(
+            "The task %s has been successfully added to the task list !",
+            task.task_name,
+        )
 
     def complete_task(self, task_name: str) -> None:
         """
         Changes a task's status to completed
 
-        :param task_name: Name of the task to complete
+        :param task_name: The name of the task to complete
         :type task_name: str
         """
-        try:
-            active_unique_id = self.task_mapper.get(task_name)
-            self.task_list[active_unique_id]["status"] = True
-        except KeyError as e:
-            logging.error("KeyError while completing task: %s", e)
-        else:
-            logging.info("The task %s has been successfully completed !", task_name)
+        active_unique_id = self.task_mapper.get(task_name)
+        if active_unique_id is None:
+            error_message = (
+                f"Task with name '{task_name}' not found in the list of tasks."
+            )
+            logging.error("KeyError while completing task: %s", error_message)
+            raise KeyError(error_message)
+        self.task_list[active_unique_id]["status"] = True
+        logging.info("The task %s has been successfully completed !", task_name)
 
     def remove_task(self, task_name: str) -> None:
         """
         Remove a specific task from the task list
 
-        :param task_name: Name of the task to remove
+        :param task_name: The name of the task to remove
         :type task_name: str
         """
-        try:
-            active_unique_id = self.task_mapper.get(task_name)
-            if active_unique_id is not None:
-                del self.task_list[active_unique_id]
-                del self.task_mapper[task_name]
-            else:
-                logging.warning("Task %s not found in the task list.", task_name)
-        except KeyError as e:
-            logging.error("KeyError while removing task: %s", e)
-        else:
-            logging.info(
-                "The task %s has been successfully removed from the task list !",
-                task_name,
+        active_unique_id = self.task_mapper.get(task_name)
+        if active_unique_id is None:
+            error_message = (
+                f"Task with name '{task_name}' not found in the list of tasks."
             )
+            logging.error("KeyError while removing task: %s", error_message)
+            raise KeyError(error_message)
+        del self.task_list[active_unique_id]
+        del self.task_mapper[task_name]
+        logging.info(
+            "The task %s has been successfully removed from the task list !",
+            task_name,
+        )
 
     def show_tasks(self) -> List:
         """
         Show the entire tasks and their attributes. Return all the values of the list.
 
-        :return: List of tasks to show
+        :return: The list of tasks to show
         :rtype: List
         """
         return list(self.task_list.values())

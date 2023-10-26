@@ -1,6 +1,7 @@
 """
 Test file for the main file of Prioritealist
 """
+import pytest
 
 from prioritealist.task_manager import Task, PrioriTeaList
 
@@ -75,3 +76,45 @@ def test_show_task_list():
         "due_date": "01-11-2023",
         "status": False,
     }
+
+
+def test_add_task_exception():
+    """Check if the exceptions are raised correclty"""
+    class_instance = PrioriTeaList()
+    task1_instance = Task(
+        "going to the bakery", task_category="food", due_date="04-12-2023"
+    )
+    task2_instance = Task(
+        "going to the bakery", task_category="food", due_date="10-01-2023"
+    )
+    class_instance.add_task(task1_instance)
+    with pytest.raises(KeyError):
+        class_instance.add_task(task2_instance)
+
+
+def test_complete_task_exception():
+    """
+    Test for the 'complete_task' method when an exception (KeyError) is expected.
+
+    :raises KeyError: If the 'complete_task' method does not raise a KeyError as expected.
+    """
+    class_instance = PrioriTeaList()
+    task_instance = Task(
+        "going to the bakery", task_category="food", due_date="04-12-2023"
+    )
+    with pytest.raises(KeyError):
+        class_instance.complete_task(task_instance.task_name)
+
+
+def test_remove_task_exception():
+    """
+    Test for the 'remove_task' method when an exception (KeyError) is expected.
+
+    :raises KeyError: If the 'remove_task' method does not raise a KeyError as expected.
+    """
+    class_instance = PrioriTeaList()
+    task_instance = Task(
+        "going to the bakery", task_category="food", due_date="04-12-2023"
+    )
+    with pytest.raises(KeyError):
+        class_instance.remove_task(task_instance.task_name)
