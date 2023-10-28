@@ -6,9 +6,10 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.09.10 -->
-        <title>PrioriTeaList 0.1.0 documentation</title>
+        <title>PrioriTeaList 0.1.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=369552022d0b975c8e74270ce6eabe0fb7978f24" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -123,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">PrioriTeaList 0.1.0 documentation</div></a>
+      <a href="#"><div class="brand">PrioriTeaList 0.1.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,7 +147,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
   
   
-  <span class="sidebar-brand-text">PrioriTeaList 0.1.0 documentation</span>
+  <span class="sidebar-brand-text">PrioriTeaList 0.1.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -187,41 +188,97 @@
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-prioritealist-s-documentation">
-<h1>Welcome to PrioriTeaList’s documentation!<a class="headerlink" href="#welcome-to-prioritealist-s-documentation" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
+          <section id="prioritealist-release-documentation">
+<h1>PrioriTeaList 0.1.1 documentation<a class="headerlink" href="#prioritealist-release-documentation" title="Permalink to this heading">#</a></h1>
+<p>PrioriTeaList is a general mock-up python project made for the course BGDIA700 Télécom Paris
+to create a python to-do list library that can handle basic functionality,
+while holding general development standards.</p>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>prioritealist
+</pre></div>
 </div>
-<p><strong>PrioriTeaList</strong> is a test documentation, we can showcase here</p>
-<p>This is a demonstration of the init function of Task <code class="docutils literal notranslate"><span class="pre">prioritealist.main.Task.__init__()</span></code> :</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="prioritealist.main.Task">
-<span class="sig-prename descclassname"><span class="pre">prioritealist.main.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#prioritealist.main.Task" title="Permalink to this definition">#</a></dt>
-<dd><p>Class to define a task</p>
-</dd></dl>
+</section>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
+<p>This is a simple example to showcase how PrioriTeaList works after being installed within your environment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prioritealist</span> <span class="kn">import</span> <span class="n">PrioriTeaList</span><span class="p">,</span> <span class="n">Task</span>
 
+<span class="n">task_list</span> <span class="o">=</span> <span class="n">PrioriTeaList</span><span class="p">()</span>
+<span class="n">task_instance</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span><span class="n">task_name</span><span class="o">=</span><span class="s1">&#39;Complete homework&#39;</span><span class="p">,</span>
+                     <span class="n">task_category</span><span class="o">=</span><span class="s1">&#39;school&#39;</span><span class="p">,</span>
+                     <span class="n">due_date</span><span class="o">=</span><span class="s1">&#39;31-10-2023&#39;</span><span class="p">)</span>
+
+<span class="c1">#Adding your task directly to the lists of tasks.</span>
+<span class="n">task_list</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="n">task_instance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you ever need to show your lists of tasks, simply call</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="prioritealist.main.Task.__init__">
-<span class="sig-prename descclassname"><span class="pre">prioritealist.main.Task.</span></span><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#prioritealist.main.Task.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Construct all the necessary attributes for the task object.</p>
+<dt class="sig sig-object py" id="prioritealist.task_manager.PrioriTeaList.show_tasks">
+<span class="sig-prename descclassname"><span class="pre">prioritealist.task_manager.PrioriTeaList.</span></span><span class="sig-name descname"><span class="pre">show_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#prioritealist.task_manager.PrioriTeaList.show_tasks" title="Permalink to this definition">#</a></dt>
+<dd><p>Show the entire tasks and their attributes. Return all the values of the list.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>task_name</strong> (<em>str</em>) – name of the task</p></li>
-<li><p><strong>task_category</strong> (<em>str</em>) – category of the task</p></li>
-<li><p><strong>due_date</strong> (<em>str</em>) – the tasks due date</p></li>
-</ul>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of tasks to show</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List</p>
 </dd>
 </dl>
 </dd></dl>
 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">task_list</span><span class="o">.</span><span class="n">show_tasks</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span><span class="p">[{</span><span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="s1">&#39;Complete homework&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;due_date&#39;</span><span class="p">:</span> <span class="s1">&#39;31-10-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>If you finally completed your task, simply call</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="prioritealist.task_manager.PrioriTeaList.complete_task">
+<span class="sig-prename descclassname"><span class="pre">prioritealist.task_manager.PrioriTeaList.</span></span><span class="sig-name descname"><span class="pre">complete_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#prioritealist.task_manager.PrioriTeaList.complete_task" title="Permalink to this definition">#</a></dt>
+<dd><p>Changes a task’s status to completed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>task_name</strong> (<em>str</em>) – The name of the task to complete</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task_list</span><span class="o">.</span><span class="n">complete_task</span><span class="p">(</span><span class="s1">&#39;Complete homework&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you need to remove this task, simply call</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="prioritealist.task_manager.PrioriTeaList.remove_task">
+<span class="sig-prename descclassname"><span class="pre">prioritealist.task_manager.PrioriTeaList.</span></span><span class="sig-name descname"><span class="pre">remove_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#prioritealist.task_manager.PrioriTeaList.remove_task" title="Permalink to this definition">#</a></dt>
+<dd><p>Remove a specific task from the task list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>task_name</strong> (<em>str</em>) – The name of the task to remove</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task_list</span><span class="o">.</span><span class="n">remove_task</span><span class="p">(</span><span class="s1">&#39;Complete homework&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<section id="main-functions">
+<h2>Main functions<a class="headerlink" href="#main-functions" title="Permalink to this heading">#</a></h2>
+<p>The main classes are <strong>PrioriTeaList</strong> and <strong>Task</strong>, they’ll help you go through your daily to-do list.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="prioritealist.task_manager.PrioriTeaList">
+<span class="sig-prename descclassname"><span class="pre">prioritealist.task_manager.</span></span><span class="sig-name descname"><span class="pre">PrioriTeaList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#prioritealist.task_manager.PrioriTeaList" title="Permalink to this definition">#</a></dt>
+<dd><p>Class to define the task list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="prioritealist.task_manager.Task">
+<span class="sig-prename descclassname"><span class="pre">prioritealist.task_manager.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#prioritealist.task_manager.Task" title="Permalink to this definition">#</a></dt>
+<dd><p>Class to define a task</p>
+</dd></dl>
+
+</section>
 </section>
 
         </article>
@@ -261,12 +318,21 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to PrioriTeaList’s documentation!</a><ul>
-<li><a class="reference internal" href="#prioritealist.main.Task"><code class="docutils literal notranslate"><span class="pre">Task()</span></code></a></li>
-<li><a class="reference internal" href="#prioritealist.main.Task.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#">PrioriTeaList 0.1.1 documentation</a><ul>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a><ul>
+<li><a class="reference internal" href="#prioritealist.task_manager.PrioriTeaList.show_tasks"><code class="docutils literal notranslate"><span class="pre">show_tasks()</span></code></a></li>
+<li><a class="reference internal" href="#prioritealist.task_manager.PrioriTeaList.complete_task"><code class="docutils literal notranslate"><span class="pre">complete_task()</span></code></a></li>
+<li><a class="reference internal" href="#prioritealist.task_manager.PrioriTeaList.remove_task"><code class="docutils literal notranslate"><span class="pre">remove_task()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#main-functions">Main functions</a><ul>
+<li><a class="reference internal" href="#prioritealist.task_manager.PrioriTeaList"><code class="docutils literal notranslate"><span class="pre">PrioriTeaList()</span></code></a></li>
+<li><a class="reference internal" href="#prioritealist.task_manager.Task"><code class="docutils literal notranslate"><span class="pre">Task()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
           </div>
@@ -280,5 +346,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     </body>
 </html>

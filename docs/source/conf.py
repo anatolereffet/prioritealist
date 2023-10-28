@@ -11,12 +11,13 @@ import sys, os
 project = "PrioriTeaList"
 copyright = "2023, Amiel, Germoni, Reffet"
 author = "Amiel, Germoni, Reffet"
-release = "0.1.0"
+release = "0.1.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx.ext.autodoc"]
+extensions = ["sphinx.ext.autodoc",
+              "sphinx_copybutton"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
