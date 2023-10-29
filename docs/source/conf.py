@@ -28,3 +28,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 html_theme = "furo"
 html_static_path = ["_static"]
+html_theme_options = {
+    'light_logo': "grey_logo_darkmode.png",
+    'dark_logo': "sand_logo_lightmode.png",
+}
