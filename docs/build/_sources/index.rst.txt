@@ -1,3 +1,8 @@
+.. PrioriTeaList documentation master file, created by
+   sphinx-quickstart on Mon Oct 16 15:17:44 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
 #####################################
 PrioriTeaList |release| documentation
 #####################################
@@ -61,5 +66,3 @@ The main classes are **PrioriTeaList** and **Task**, they'll help you go through
 .. autofunction:: prioritealist.task_manager.PrioriTeaList
 
 .. autofunction:: prioritealist.task_manager.Task
-
-
