@@ -16,7 +16,8 @@ release = "0.1.0"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx.ext.autodoc"]
+extensions = ["sphinx.ext.autodoc",
+              "sphinx_copybutton"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
@@ -27,3 +28,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 
 html_theme = "furo"
 html_static_path = ["_static"]
+html_theme_options = {
+    'light_logo': "grey_logo_darkmode.png",
+    'dark_logo': "sand_logo_lightmode.png",
+}
