@@ -1,0 +1,74 @@
+name: Continous Delivery
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  update_version:
+    name: Update the version of the project
+    runs-on: ubuntu-22.04
+    env:
+        commitmsg: ${{ github.event.head_commit.message }}
+    steps:
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+        cache: poetry
+        cache-dependency-path: poetry.lock
+    - name: Set Poetry environment
+      run: |
+        poetry env use 3.8
+    - name: Parse commit
+      run: |
+        bump_rule=$(awk -F'*' '{print $2}' <<< ${{ env.commitmsg }})
+    - name: Bump version
+      run: |
+        poetry version "$bump_rule"
+
+  release:
+    name: Create Github Release
+    runs-on: ubuntu-22.04
+    concurrency: release
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.ADMINISTRATOR_GITHUB_TOKEN }}
+    - name: Create release
+      uses: python-semantic-release/python-semantic-release@master
+      with:
+        git_committer_name: ${{ secrets.NAME_GITHUB }}
+        git_committer_email: ${{ secrets.EMAIL_GITHUB }}
+        github_token: ${{ secrets.ADMINISTRATOR_GITHUB_TOKEN }}
+
+  publish:
+      name: Publish package to PyPI
+      runs-on: ubuntu-22.04
+      
+      steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Get API token
+        run: |
+          poetry config pypi-token.pypi ${{secrets.PYPI_API_TOKEN}}
+      - name: Build
+        run: |
+          poetry build
+      - name: Publish
+        run: |
+          poetry publish
