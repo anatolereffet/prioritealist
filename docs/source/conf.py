@@ -11,7 +11,7 @@ import sys, os
 project = "PrioriTeaList"
 copyright = "2023, Amiel, Germoni, Reffet"
 author = "Amiel, Germoni, Reffet"
-release = "0.1.1"
+release = "0.2.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
