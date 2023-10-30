@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "prioritealist"
-version = "0.1.1"
+version = "0.2.0"
 description = "Priority list project for Télécom Paris Post Master Degree"
 authors = ["quentinaml <quentin.amiel@free.fr>",
            "anatolereffet <anatole.reffet@ieseg.fr>",
