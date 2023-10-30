@@ -1,0 +1,37 @@
+name: Publish to PyPi
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish_to_pypi:
+    name: Bump Version
+    runs-on: ubuntu-22.04
+    if: contains(github.event.head_commit.message, 'Bump version pyproject.toml')
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+        cache: poetry
+        cache-dependency-path: poetry.lock
+    - name: Set Poetry environment
+      run: |
+        poetry env use 3.8
+    - name: Get API token
+      run: |
+        poetry config pypi-token.pypi ${{secrets.PYPI_API_TOKEN}}
+    - name: Build
+      run: |
+        poetry build
+    - name: Publish
+      run: |
+        poetry publish

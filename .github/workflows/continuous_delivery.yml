@@ -12,9 +12,9 @@ jobs:
   update_version:
     name: Update the version of the project
     runs-on: ubuntu-22.04
-    env:
-        commitmsg: ${{ github.event.head_commit.message }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Install Poetry
       run: |
         pipx install poetry
@@ -27,16 +27,34 @@ jobs:
     - name: Set Poetry environment
       run: |
         poetry env use 3.8
-    - name: Parse commit
+    - name: Parse commit & store the value
       run: |
-        bump_rule=$(awk -F'*' '{print $2}' <<< ${{ env.commitmsg }})
-    - name: Bump version
+        last_commit_hash=$(git rev-parse HEAD)
+        commit_msg=$(git log --format=%B -n 1 $last_commit_hash)
+        #Extract word after *
+        bump_rule=$(awk -F'*' '{print $2}' <<< "${commit_msg}")
+        echo "bump_rule=$bump_rule" >> $GITHUB_ENV
+
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.ADMINISTRATOR_GITHUB_TOKEN }}
+
+    - name: Bump version & commit
       run: |
-        poetry version "$bump_rule"
+        poetry version ${{env.bump_rule}}
+        version_nb=$(poetry version --short)
+        echo "version_nb=$version_nb" >> $GITHUB_ENV
+        git config --global user.email ${{ secrets.EMAIL_GITHUB }}
+        git config --global user.name ${{ secrets.NAME_GITHUB }}
+        git commit -am "Bump version pyproject.toml to $version_nb"
+        git push origin master
+
 
   release:
     name: Create Github Release
     runs-on: ubuntu-22.04
+    needs : update_version
     concurrency: release
     permissions:
       id-token: write
@@ -52,23 +70,3 @@ jobs:
         git_committer_name: ${{ secrets.NAME_GITHUB }}
         git_committer_email: ${{ secrets.EMAIL_GITHUB }}
         github_token: ${{ secrets.ADMINISTRATOR_GITHUB_TOKEN }}
-
-  publish:
-      name: Publish package to PyPI
-      runs-on: ubuntu-22.04
-      
-      steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-      - name: Get API token
-        run: |
-          poetry config pypi-token.pypi ${{secrets.PYPI_API_TOKEN}}
-      - name: Build
-        run: |
-          poetry build
-      - name: Publish
-        run: |
-          poetry publish
