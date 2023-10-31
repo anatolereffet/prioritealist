@@ -24,9 +24,9 @@ pytest-cov = "^4.1.0"
 furo = "^2023.9.10"
 safety = "^2.3.5"
 sphinx-copybutton = "^0.5.2"
-semantic-release = "^0.1.0"
 toml = "^0.10.2"
 types-toml = "^0.10.8.7"
+python-semantic-release = "^7.33.5"
 
 [build-system]
 requires = ["poetry-core"]
@@ -44,5 +44,4 @@ version_variable = [
     "pyproject.toml:version"
 ]
 branch = "master"
-upload_to_pypi = true
 upload_to_release = true

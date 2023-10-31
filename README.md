@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/anatolereffet/prioritealist/master/docs/source/sand_logo_lightmode.png">
+    <img src="https://raw.githubusercontent.com/anatolereffet/prioritealist/master/docs/source/sand_logo_lightmode.png" style="transform: scale(0.5);>
 </p>
 
 <h2 align="center">Priori-Tea List: Sipping Success One Task at a Time</h2>
