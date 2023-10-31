@@ -2,7 +2,37 @@
 
 
 
-## v0.2.0 (2023-10-30)
+## v0.2.2 (2023-10-31)
+
+### Fix
+
+* fix: CD fix on Git Actions ([`60c11e3`](https://github.com/anatolereffet/prioritealist/commit/60c11e3e9f5ff8ae0b5f284d9df7a935be1c3b0e))
+
+
+## v0.2.1 (2023-10-31)
+
+### Unknown
+
+* ci : Fixing current release number for CD ([`1bccfac`](https://github.com/anatolereffet/prioritealist/commit/1bccfac38c1e88a6fb28c0c3c73a319dbba7ab2c))
+
+* Bump version pyproject.toml to 0.2.0 ([`3568e4d`](https://github.com/anatolereffet/prioritealist/commit/3568e4d1236b1e639db1baad318859fdf3c00e04))
+
+* Release *minor ([`d0a1100`](https://github.com/anatolereffet/prioritealist/commit/d0a11003de6d75bf563c4c58712ecd8dcf8dcfb1))
+
+
+## v0.0.0 (2023-10-30)
+
+### Unknown
+
+* Fixing CD and getting ready for deployment tryout ([`adbb141`](https://github.com/anatolereffet/prioritealist/commit/adbb1417a7fd3e096fc799d134927794c7ca2e10))
+
+* Add cd file to master ([`971c54d`](https://github.com/anatolereffet/prioritealist/commit/971c54dc2f26d36e0554e8245a51954ccf03d266))
+
+* Delete pypi_publish.yml ([`b35c7d2`](https://github.com/anatolereffet/prioritealist/commit/b35c7d237926ea5d4b4ff3d8e8bb45cf64399cec))
+
+* adding logo to the documentation ([`f88f7b9`](https://github.com/anatolereffet/prioritealist/commit/f88f7b9cce772b134fd91980730ce90b355d92b3))
+
+* Cleaning up documentation for first clean CD release ([`005486b`](https://github.com/anatolereffet/prioritealist/commit/005486b1a408ded9267a01e2bf72fe4fb8cb8d77))
 
 * Add test functions on exceptions, adapting functions in taskmanager.py ([`305bb21`](https://github.com/anatolereffet/prioritealist/commit/305bb2177bf85d2291cdd58c92cfa7f6cabd0b89))
 
@@ -10,11 +40,7 @@
 
 * Split dev dependencies and runtime dependencie, add safety check ([`c8ebdbf`](https://github.com/anatolereffet/prioritealist/commit/c8ebdbfea50606522ffce7757d4ecd9145fdf22f))
 
-## v0.1.1(2023-10-24)
-
 * bump version for pypi release hotfix ([`da6866e`](https://github.com/anatolereffet/prioritealist/commit/da6866e58dd31ab41d6049aa983189eccfbbc987))
-
-## v0.1.0(2023-10-24)
 
 * refactor init to publish on pypi ([`7bafda2`](https://github.com/anatolereffet/prioritealist/commit/7bafda2a2a9026d40c0d17b09fda9bc76b635b35))
 
@@ -51,6 +77,10 @@
 * Sphinx fix and quick demo, add MakeFile docs ([`bfb4c18`](https://github.com/anatolereffet/prioritealist/commit/bfb4c1873e8547cd2f21c51ef128a3bc9a06fa3f))
 
 * add test function, docstring, minor update on main.py ([`d2559ec`](https://github.com/anatolereffet/prioritealist/commit/d2559ec0a8271bc5f192da7850942aa700bc8871))
+
+* Initial setup with poetry, makefile creation, impl
+ement of code coverage, test coverage and type hinting coverage. Initial setup of documentation with sphinx as wel
+l ([`e3b74a8`](https://github.com/anatolereffet/prioritealist/commit/e3b74a8b0ee72c22ffda32cb4e73edb7a799c659))
 
 * initial class write-up ([`f16439e`](https://github.com/anatolereffet/prioritealist/commit/f16439ef24bf355bcf4799129abc4cde19251e52))
 
