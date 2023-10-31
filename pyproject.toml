@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "prioritealist"
-version = "0.2.0"
+version = "0.2.1"
 description = "Priority list project for Télécom Paris Post Master Degree"
 authors = ["quentinaml <quentin.amiel@free.fr>",
            "anatolereffet <anatole.reffet@ieseg.fr>",
@@ -40,7 +40,6 @@ exclude_also = [
 
 [tool.semantic_release]
 version_variable = [
-    "prioritealist/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 branch = "master"

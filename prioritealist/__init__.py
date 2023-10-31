@@ -21,4 +21,3 @@ try:
     __version__ = metadata.version(__package__)
 except metadata.PackageNotFoundError:
     __version__ = toml.load("pyproject.toml")["tool"]["poetry"]["version"]
-print(__version__)
