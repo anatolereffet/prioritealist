@@ -16,4 +16,4 @@ import toml
 from .task_manager import Task, PrioriTeaList
 
 __all__ = ["Task", "PrioriTeaList"]
-__version__= "0.2.1"
+__version__= "0.2.2"
