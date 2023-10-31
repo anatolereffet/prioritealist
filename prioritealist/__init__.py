@@ -11,9 +11,7 @@ You can create, update, and delete tasks.
 Tasks can have a title, description, due date, and status.
 Use the functions and classes provided in this module to interact with the task manager.
 """
-from importlib import metadata
-import toml
 from .task_manager import Task, PrioriTeaList
 
 __all__ = ["Task", "PrioriTeaList"]
-__version__= "0.2.2"
+__version__= "0.2.4"
