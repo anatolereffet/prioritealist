@@ -16,8 +16,4 @@ import toml
 from .task_manager import Task, PrioriTeaList
 
 __all__ = ["Task", "PrioriTeaList"]
-
-try:
-    __version__ = metadata.version(__package__)
-except metadata.PackageNotFoundError:
-    __version__ = toml.load("pyproject.toml")["tool"]["poetry"]["version"]
+__version__= "0.2.1"
